@@ -1,0 +1,62 @@
+name: news_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.5
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^2.6.1
+  flutter_svg: ^2.3.4
+  go_router: ^17.5.0
+  http: ^1.6.0
+  share_plus: ^13.3.1
+  shared_preferences: ^2.5.6
+  url_launcher: ^6.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/sample/
+  fonts:
+    - family: DM Sans
+      fonts:
+        - asset: assets/fonts/font-0.ttf
+          weight: 400
+        - asset: assets/fonts/font-1.ttf
+          weight: 500
+        - asset: assets/fonts/font-2.ttf
+          weight: 600
+        - asset: assets/fonts/font-3.ttf
+          weight: 700
+    - family: Libre Baskerville
+      fonts:
+        - asset: assets/fonts/font-4.ttf
+          weight: 400
+        - asset: assets/fonts/font-5.ttf
+          weight: 700
+    - family: Noto Sans Devanagari
+      fonts:
+        - asset: assets/fonts/font-6.ttf
+          weight: 400
+        - asset: assets/fonts/font-7.ttf
+          weight: 500
+        - asset: assets/fonts/font-8.ttf
+          weight: 600
+    - family: Noto Serif Devanagari
+      fonts:
+        - asset: assets/fonts/font-9.ttf
+          weight: 500
+        - asset: assets/fonts/font-10.ttf
+          weight: 600

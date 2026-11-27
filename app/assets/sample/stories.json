@@ -1,0 +1,56 @@
+[
+ {
+  "id": "cricket",
+  "category": "sports",
+  "source": "ICC",
+  "url": "https://www.icc-cricket.com/tournaments/t20cricketworldcup/news/live-india-and-south-africa-face-off-in-t20-world-cup-final",
+  "image": "assets/images/cricket.webp",
+  "credit": "ICC · editorial reference",
+  "alt": "India players celebrating the 2024 T20 World Cup final",
+  "publishedAt": "2024-06-29T12:00:00Z",
+  "title": {
+   "en": "India lifts the T20 World Cup",
+   "hi": "टी20 विश्व कप फिर भारत के नाम"
+  },
+  "summary": {
+   "en": "India beat South Africa by seven runs in Barbados to win the T20 World Cup on 29 June 2024. The final stayed close until the closing overs, when India’s bowlers held their nerve. The victory brought India its second title in the tournament, following the first in 2007, and capped an unbeaten campaign for the team led by Rohit Sharma.",
+   "hi": "भारत ने 29 जून 2024 को बारबाडोस में दक्षिण अफ्रीका को सात रन से हराकर पुरुष टी20 विश्व कप जीता। आखिरी ओवरों तक मुकाबला रोमांचक रहा, लेकिन भारतीय गेंदबाजों ने दबाव में जीत बचा ली। यह भारत का दूसरा टी20 विश्व कप खिताब है। रोहित शर्मा की कप्तानी में टीम ने टूर्नामेंट में एक भी मैच गंवाए बिना ट्रॉफी जीती।"
+  }
+ },
+ {
+  "id": "moon",
+  "category": "science",
+  "source": "NASA",
+  "url": "https://science.nasa.gov/mission/chandrayaan-3/",
+  "image": "assets/images/moon.webp",
+  "credit": "ISRO / NASA · mission illustration",
+  "alt": "ISRO illustration of the Chandrayaan-3 lander and rover on the Moon",
+  "publishedAt": "2023-08-23T12:00:00Z",
+  "title": {
+   "en": "India reaches the Moon’s southern frontier",
+   "hi": "चाँद के दक्षिणी क्षेत्र में पहुँचा भारत"
+  },
+  "summary": {
+   "en": "India’s Chandrayaan-3 mission landed near the Moon’s south pole on 23 August 2023. The spacecraft carried the Vikram lander and Pragyan rover to study the lunar surface. The mission demonstrated India’s ability to land safely and operate a rover on another world. Its observations contribute to research on the Moon and support planning for future missions to explore our neighbour.",
+   "hi": "भारत के चंद्रयान-3 ने 23 अगस्त 2023 को चाँद के दक्षिणी ध्रुव के पास लैंडिंग की। विक्रम लैंडर और प्रज्ञान रोवर चाँद की सतह का अध्ययन करने पहुँचे। इस अभियान ने सुरक्षित उतरने और रोवर चलाने की भारत की क्षमता दिखाई। इससे मिले वैज्ञानिक आँकड़े चाँद को समझने और भविष्य के अंतरिक्ष अभियानों की योजना बनाने में मदद करते हैं।"
+  }
+ },
+ {
+  "id": "solar",
+  "category": "science",
+  "source": "ISRO",
+  "url": "https://www.isro.gov.in/halo-orbit-insertion-adtya-l1.html",
+  "image": "assets/images/solar.webp",
+  "credit": "ISRO · mission illustration",
+  "alt": "ISRO illustration of the Aditya-L1 solar observatory",
+  "publishedAt": "2024-01-06T12:00:00Z",
+  "title": {
+   "en": "Aditya-L1 reaches its solar watchpoint",
+   "hi": "आदित्य-एल1 अपनी तय कक्षा में पहुँचा"
+  },
+  "summary": {
+   "en": "India’s Aditya-L1 solar observatory entered its planned halo orbit on 6 January 2024. The spacecraft operates around the first Sun–Earth Lagrange point, about 1.5 million kilometres from Earth. From there, it can study the Sun continuously without eclipses. The mission will help scientists investigate solar activity and better understand how changes on the Sun influence the environment around our planet.",
+   "hi": "भारत की सौर वेधशाला आदित्य-एल1 ने 6 जनवरी 2024 को अपनी तय हेलो कक्षा में प्रवेश किया। यह पृथ्वी से 15 लाख किलोमीटर दूर सूर्य और पृथ्वी के पहले लाग्रांज बिंदु के पास काम करती है। यहाँ से सूर्य को देखा जा सकता है। अभियान से वैज्ञानिकों को सौर गतिविधियों और पृथ्वी पर उनके प्रभावों को समझने में मदद मिलेगी।"
+  }
+ }
+]
