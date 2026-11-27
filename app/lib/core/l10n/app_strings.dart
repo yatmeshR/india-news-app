@@ -6,6 +6,7 @@ class AppStrings {
   final String languageCode;
 
   bool get isHindi => languageCode == 'hi';
+  bool get isMarathi => languageCode == 'mr';
 
   String call(String key) =>
       kStrings[languageCode]?[key] ?? kStrings['en']![key] ?? key;
@@ -15,14 +16,22 @@ class AppStrings {
     final n = now ?? DateTime.now();
     final d = n.difference(time);
     if (!d.isNegative && d.inHours < 24) {
-      if (d.inMinutes < 1) return isHindi ? 'अभी' : 'Just now';
+      if (d.inMinutes < 1) return isHindi ? 'अभी' : (isMarathi ? 'आत्ताच' : 'Just now');
       if (d.inMinutes < 60) {
-        return isHindi ? '${d.inMinutes} मिनट पहले' : '${d.inMinutes}m ago';
+        return isHindi
+            ? '${d.inMinutes} मिनट पहले'
+            : isMarathi
+                ? '${d.inMinutes} मिनिटांपूर्वी'
+                : '${d.inMinutes}m ago';
       }
-      return isHindi ? '${d.inHours} घंटे पहले' : '${d.inHours}h ago';
+      return isHindi
+          ? '${d.inHours} घंटे पहले'
+          : isMarathi
+              ? '${d.inHours} तासांपूर्वी'
+              : '${d.inHours}h ago';
     }
     final t = time.toLocal();
-    final m = (isHindi ? _monthsHi : _monthsEn)[t.month - 1];
+    final m = (isHindi ? _monthsHi : isMarathi ? _monthsMr : _monthsEn)[t.month - 1];
     return '${t.day} $m ${t.year}';
   }
 }
@@ -32,4 +41,7 @@ const _monthsEn = [
 ];
 const _monthsHi = [
   'जन॰', 'फ़र॰', 'मार्च', 'अप्रैल', 'मई', 'जून', 'जुल॰', 'अग॰', 'सित॰', 'अक्टू॰', 'नव॰', 'दिस॰',
+];
+const _monthsMr = [
+  'जाने', 'फेब्रु', 'मार्च', 'एप्रिल', 'मे', 'जून', 'जुलै', 'ऑग', 'सप्टें', 'ऑक्टो', 'नोव्हें', 'डिसें',
 ];

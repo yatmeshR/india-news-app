@@ -54,4 +54,18 @@ void main() {
     await settle(tester);
     expect(find.text('Follow what matters to you.'), findsOneWidget);
   });
+
+  testWidgets('Marathi renders with Devanagari copy and a Marathi category', (tester) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 3;
+    addTearDown(tester.view.reset);
+
+    await pumpApp(tester, {'onboarded': true, 'language': 'mr'});
+    await tester.pump(const Duration(milliseconds: 1300));
+    await settle(tester);
+    expect(find.text('मुख्य बातम्या'), findsWidgets);
+    await tester.tap(find.text('शोधा').last);
+    await settle(tester);
+    expect(find.text('तुमच्यासाठी महत्त्वाचे ते जाणून घ्या.'), findsOneWidget);
+  });
 }

@@ -24,3 +24,6 @@ sources:
   # Hindi (verify these URLs when testing; the worker logs any feed that fails)
   - {name: BBC Hindi, url: "https://feeds.bbci.co.uk/hindi/rss.xml", language: hi, category: top}
   - {name: NDTV Khabar, url: "https://feeds.feedburner.com/ndtvkhabar-latest", language: hi, category: top}
+  # Marathi (verify these URLs when testing; the worker logs any feed that fails)
+  - {name: BBC Marathi, url: "https://feeds.bbci.co.uk/marathi/rss.xml", language: mr, category: top}
+  - {name: Loksatta, url: "https://www.loksatta.com/feed/", language: mr, category: top}

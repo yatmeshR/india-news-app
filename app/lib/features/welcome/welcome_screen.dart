@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/l10n/languages.dart';
 import '../../data/models.dart';
 import '../../state/settings_provider.dart';
 import '../splash/splash_screen.dart';
@@ -36,21 +37,16 @@ class WelcomeScreen extends ConsumerWidget {
                   Text(s('language'), style: t.labelLarge),
                   const SizedBox(height: 8),
                   Row(children: [
-                    Expanded(
-                      child: _LanguageCard(
-                        label: 'English',
-                        selected: settings.language == 'en',
-                        onTap: () => notifier.setLanguage('en'),
+                    for (final (i, l) in kLanguages.indexed) ...[
+                      if (i > 0) const SizedBox(width: 8),
+                      Expanded(
+                        child: _LanguageCard(
+                          label: l.native,
+                          selected: settings.language == l.code,
+                          onTap: () => notifier.setLanguage(l.code),
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: _LanguageCard(
-                        label: 'हिन्दी',
-                        selected: settings.language == 'hi',
-                        onTap: () => notifier.setLanguage('hi'),
-                      ),
-                    ),
+                    ],
                   ]),
                   const SizedBox(height: 24),
                   Text(s('state'), style: t.labelLarge),
@@ -109,7 +105,8 @@ class _LanguageCard extends StatelessWidget {
         onTap: onTap,
         child: Container(
           constraints: const BoxConstraints(minHeight: 64),
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          alignment: Alignment.center,
           decoration: BoxDecoration(
             color: selected ? scheme.primaryContainer : scheme.surface,
             borderRadius: BorderRadius.circular(12),
@@ -118,10 +115,16 @@ class _LanguageCard extends StatelessWidget {
               width: selected ? 2 : 1,
             ),
           ),
-          child: Row(children: [
-            Expanded(child: Text(label, style: Theme.of(context).textTheme.bodyLarge)),
-            if (selected) Icon(Icons.check_circle_outline, color: scheme.primary),
-          ]),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(mainAxisSize: MainAxisSize.min, children: [
+              Text(label, style: Theme.of(context).textTheme.bodyLarge),
+              if (selected) ...[
+                const SizedBox(width: 6),
+                Icon(Icons.check_circle_outline, size: 20, color: scheme.primary),
+              ],
+            ]),
+          ),
         ),
       ),
     );

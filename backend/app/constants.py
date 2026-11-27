@@ -15,7 +15,7 @@ CATEGORIES = [
 
 CATEGORY_SLUGS = {slug for slug, _ in CATEGORIES}
 
-LANGUAGES = {"en": "English", "hi": "Hindi"}
+LANGUAGES = {"en": "English", "hi": "Hindi", "mr": "Marathi"}
 
 # state name -> keywords (lowercase). Used to tag state/city news.
 STATE_KEYWORDS = {

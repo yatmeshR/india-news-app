@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'core/l10n/languages.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/news_theme.dart';
 import 'state/settings_provider.dart';
@@ -25,7 +26,7 @@ class NewsApp extends ConsumerWidget {
       darkTheme: NewsTheme.build(brightness: Brightness.dark, languageCode: lang),
       locale: Locale(lang),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      supportedLocales: const [Locale('en'), Locale('hi')],
+      supportedLocales: [for (final l in kLanguages) Locale(l.code)],
       builder: (context, child) {
         // In-app text size multiplies the system font scale; it never clamps it.
         final system = MediaQuery.textScalerOf(context);

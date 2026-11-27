@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 
 class NewsCategory {
-  const NewsCategory(this.slug, this.en, this.hi, this.icon);
+  const NewsCategory(this.slug, this.en, this.hi, this.mr, this.icon);
   final String slug;
   final String en;
   final String hi;
+  final String mr;
   final IconData icon;
-  String name(String lang) => lang == 'hi' ? hi : en;
+  String name(String lang) => switch (lang) { 'hi' => hi, 'mr' => mr, _ => en };
 }
 
 const kCategories = <NewsCategory>[
-  NewsCategory('top', 'Top Stories', 'मुख्य खबरें', Icons.newspaper_outlined),
-  NewsCategory('india', 'India', 'भारत', Icons.flag_outlined),
-  NewsCategory('world', 'World', 'विश्व', Icons.public),
-  NewsCategory('business', 'Business', 'व्यापार', Icons.show_chart),
-  NewsCategory('politics', 'Politics', 'राजनीति', Icons.account_balance_outlined),
-  NewsCategory('sports', 'Sports', 'खेल', Icons.emoji_events_outlined),
-  NewsCategory('entertainment', 'Entertainment', 'मनोरंजन', Icons.movie_outlined),
-  NewsCategory('technology', 'Technology', 'टेक्नोलॉजी', Icons.memory),
-  NewsCategory('science', 'Science', 'विज्ञान', Icons.science_outlined),
-  NewsCategory('health', 'Health', 'स्वास्थ्य', Icons.monitor_heart_outlined),
-  NewsCategory('education', 'Education', 'शिक्षा', Icons.school_outlined),
-  NewsCategory('startups', 'Startups', 'स्टार्टअप', Icons.rocket_launch_outlined),
+  NewsCategory('top', 'Top Stories', 'मुख्य खबरें', 'मुख्य बातम्या', Icons.newspaper_outlined),
+  NewsCategory('india', 'India', 'भारत', 'भारत', Icons.flag_outlined),
+  NewsCategory('world', 'World', 'विश्व', 'जग', Icons.public),
+  NewsCategory('business', 'Business', 'व्यापार', 'व्यवसाय', Icons.show_chart),
+  NewsCategory('politics', 'Politics', 'राजनीति', 'राजकारण', Icons.account_balance_outlined),
+  NewsCategory('sports', 'Sports', 'खेल', 'क्रीडा', Icons.emoji_events_outlined),
+  NewsCategory('entertainment', 'Entertainment', 'मनोरंजन', 'मनोरंजन', Icons.movie_outlined),
+  NewsCategory('technology', 'Technology', 'टेक्नोलॉजी', 'तंत्रज्ञान', Icons.memory),
+  NewsCategory('science', 'Science', 'विज्ञान', 'विज्ञान', Icons.science_outlined),
+  NewsCategory('health', 'Health', 'स्वास्थ्य', 'आरोग्य', Icons.monitor_heart_outlined),
+  NewsCategory('education', 'Education', 'शिक्षा', 'शिक्षण', Icons.school_outlined),
+  NewsCategory('startups', 'Startups', 'स्टार्टअप', 'स्टार्टअप', Icons.rocket_launch_outlined),
 ];
 
 NewsCategory categoryBySlug(String slug) =>
@@ -46,10 +47,50 @@ const kStatesHi = <String>[
   'जम्मू और कश्मीर', 'लद्दाख', 'लक्षद्वीप', 'पुदुच्चेरी',
 ];
 
+const kStatesMr = <String>[
+  'आंध्र प्रदेश',
+  'अरुणाचल प्रदेश',
+  'आसाम',
+  'बिहार',
+  'छत्तीसगड',
+  'गोवा',
+  'गुजरात',
+  'हरियाणा',
+  'हिमाचल प्रदेश',
+  'झारखंड',
+  'कर्नाटक',
+  'केरळ',
+  'मध्य प्रदेश',
+  'महाराष्ट्र',
+  'मणिपूर',
+  'मेघालय',
+  'मिझोराम',
+  'नागालँड',
+  'ओडिशा',
+  'पंजाब',
+  'राजस्थान',
+  'सिक्कीम',
+  'तमिळनाडू',
+  'तेलंगणा',
+  'त्रिपुरा',
+  'उत्तर प्रदेश',
+  'उत्तराखंड',
+  'पश्चिम बंगाल',
+  'अंदमान आणि निकोबार बेटे',
+  'चंदीगड',
+  'दादरा आणि नगर हवेली व दमण आणि दीव',
+  'दिल्ली',
+  'जम्मू आणि काश्मीर',
+  'लडाख',
+  'लक्षद्वीप',
+  'पुदुच्चेरी',
+];
+
 String stateLabel(String state, String lang) {
-  if (lang != 'hi') return state;
+  final names = switch (lang) { 'hi' => kStatesHi, 'mr' => kStatesMr, _ => null };
+  if (names == null) return state;
   final i = kStates.indexOf(state);
-  return i < 0 ? state : kStatesHi[i];
+  return i < 0 ? state : names[i];
 }
 
 class Article {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/l10n/languages.dart';
 import '../../data/models.dart';
 import '../../state/news_providers.dart';
 import '../../state/settings_provider.dart';
@@ -120,8 +121,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 value: query.language,
                 items: [
                   DropdownMenuItem(value: null, child: Text(s('anyLanguage'))),
-                  const DropdownMenuItem(value: 'en', child: Text('English')),
-                  const DropdownMenuItem(value: 'hi', child: Text('हिन्दी')),
+                  for (final l in kLanguages)
+                    DropdownMenuItem(value: l.code, child: Text(l.native)),
                 ],
                 onChanged: (v) => ref.read(searchQueryProvider.notifier).setLanguage(v),
               ),

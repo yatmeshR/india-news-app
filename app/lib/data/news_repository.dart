@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/config.dart';
+import '../core/l10n/languages.dart';
 import 'models.dart';
 
 /// Talks to the FastAPI backend (`GET /v1/feed`, `/v1/search`, `/v1/articles/{id}`),
@@ -105,7 +106,7 @@ class NewsRepository {
       return Article.fromJson(
           await _get(_uri('/v1/articles/$id')) as Map<String, dynamic>);
     } catch (_) {
-      for (final lang in const ['en', 'hi']) {
+      for (final lang in [for (final l in kLanguages) l.code]) {
         final hit = (await _samples(lang)).where((a) => a.id == id);
         if (hit.isNotEmpty) return hit.first;
       }

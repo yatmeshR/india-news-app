@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../core/l10n/languages.dart';
 import '../../state/settings_provider.dart';
 import '../welcome/welcome_screen.dart';
 
@@ -35,9 +36,8 @@ class SettingsScreen extends ConsumerWidget {
           initialValue: settings.language,
           isExpanded: true,
           style: t.bodyLarge,
-          items: const [
-            DropdownMenuItem(value: 'en', child: Text('English')),
-            DropdownMenuItem(value: 'hi', child: Text('हिन्दी')),
+          items: [
+            for (final l in kLanguages) DropdownMenuItem(value: l.code, child: Text(l.native)),
           ],
           onChanged: (v) => v == null ? null : n.setLanguage(v),
         ),

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../core/l10n/languages.dart';
 import '../core/theme/news_theme.dart';
 import '../data/models.dart';
 import '../state/saved_provider.dart';
@@ -240,7 +241,7 @@ class CategoryTag extends ConsumerWidget {
       style: Theme.of(context).textTheme.labelLarge?.copyWith(
             color: Theme.of(context).colorScheme.primary,
             fontSize: 12,
-            letterSpacing: lang == 'hi' ? 0 : 1,
+            letterSpacing: isDevanagari(lang) ? 0 : 1,
             fontWeight: FontWeight.w700,
           ),
     );

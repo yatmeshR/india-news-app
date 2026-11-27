@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/languages.dart';
+
 /// Paper design handoff. Register the bundled fonts using pubspec-fonts.yaml.
 /// Theme starter, not a compiled app. Honour MediaQuery.textScalerOf(context);
 /// never clamp a user's system scaling to fit a card.
@@ -16,7 +18,7 @@ abstract final class NewsTheme {
     String languageCode = 'en',
   }) {
     final dark = brightness == Brightness.dark;
-    final hindi = languageCode == 'hi';
+    final hindi = isDevanagari(languageCode); // Hindi + Marathi
     final background = Color(dark ? 0xFF0F1217 : 0xFFF6F3EC);
     final surface = Color(dark ? 0xFF181C23 : 0xFFFFFFFF);
     final text = Color(dark ? 0xFFF2EFE8 : 0xFF14181F);

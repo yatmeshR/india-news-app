@@ -41,7 +41,7 @@ class DiscoverScreen extends ConsumerWidget {
             Text(s('discoverSub'), style: t.headlineLarge),
             const SizedBox(height: 8),
             Text(
-              settings.language == 'hi' ? '12 तरीके, भारत और दुनिया को देखने के' : '12 ways to see India and the world.',
+              s('discoverCount'),
               style: t.bodyMedium?.copyWith(color: scheme.onSurfaceVariant),
             ),
           ]),
