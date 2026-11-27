@@ -29,7 +29,7 @@ void main() {
 
     await pumpApp(tester, {});
     expect(find.text('A clearer view of India.'), findsOneWidget);
-    await tester.pump(const Duration(milliseconds: 1300));
+    await tester.pump(const Duration(milliseconds: 2000));
     await settle(tester);
     expect(find.text('Get started'), findsOneWidget);
 
@@ -46,7 +46,7 @@ void main() {
     addTearDown(tester.view.reset);
 
     await pumpApp(tester, {'onboarded': true});
-    await tester.pump(const Duration(milliseconds: 1300));
+    await tester.pump(const Duration(milliseconds: 2000));
     await settle(tester);
     expect(find.byType(NavigationBar), findsOneWidget);
 
@@ -61,7 +61,7 @@ void main() {
     addTearDown(tester.view.reset);
 
     await pumpApp(tester, {'onboarded': true, 'language': 'mr'});
-    await tester.pump(const Duration(milliseconds: 1300));
+    await tester.pump(const Duration(milliseconds: 2000));
     await settle(tester);
     expect(find.text('मुख्य बातम्या'), findsWidgets);
     await tester.tap(find.text('शोधा').last);

@@ -54,13 +54,34 @@ class SplashScreen extends ConsumerStatefulWidget {
   ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends ConsumerState<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  static const _total = Duration(milliseconds: 1400);
+  late final AnimationController _c = AnimationController(vsync: this, duration: _total);
   Timer? _timer;
+
+  late final Animation<double> _logoFade = CurvedAnimation(
+    parent: _c,
+    curve: const Interval(0, .35, curve: Curves.easeOut),
+  );
+  late final Animation<double> _logoScale = Tween(begin: .6, end: 1.0).animate(
+    CurvedAnimation(parent: _c, curve: const Interval(0, .5, curve: Curves.easeOutBack)),
+  );
+  late final Animation<double> _wordFade = CurvedAnimation(
+    parent: _c,
+    curve: const Interval(.4, .75, curve: Curves.easeOut),
+  );
+  late final Animation<Offset> _wordSlide = Tween(begin: const Offset(0, .4), end: Offset.zero)
+      .animate(CurvedAnimation(parent: _c, curve: const Interval(.4, .75, curve: Curves.easeOutCubic)));
+  late final Animation<double> _tagFade = CurvedAnimation(
+    parent: _c,
+    curve: const Interval(.65, 1, curve: Curves.easeOut),
+  );
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer(const Duration(milliseconds: 1200), () {
+    _timer = Timer(_total + const Duration(milliseconds: 500), () {
       if (!mounted) return;
       final onboarded = ref.read(settingsProvider).onboarded;
       context.go(onboarded ? Routes.feed : Routes.welcome);
@@ -68,8 +89,20 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Reduced motion: show the finished frame immediately.
+    if (MediaQuery.disableAnimationsOf(context)) {
+      _c.value = 1;
+    } else if (!_c.isAnimating && _c.value == 0) {
+      _c.forward();
+    }
+  }
+
+  @override
   void dispose() {
     _timer?.cancel();
+    _c.dispose();
     super.dispose();
   }
 
@@ -80,15 +113,24 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          const AppLogo(size: 88),
+          FadeTransition(
+            opacity: _logoFade,
+            child: ScaleTransition(scale: _logoScale, child: const AppLogo(size: 88)),
+          ),
           const SizedBox(height: 24),
-          const Wordmark(size: 32),
+          FadeTransition(
+            opacity: _wordFade,
+            child: SlideTransition(position: _wordSlide, child: const Wordmark(size: 32)),
+          ),
           const SizedBox(height: 8),
-          Text(s('tagline'),
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyLarge
-                  ?.copyWith(color: scheme.onSurfaceVariant)),
+          FadeTransition(
+            opacity: _tagFade,
+            child: Text(s('tagline'),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(color: scheme.onSurfaceVariant)),
+          ),
         ]),
       ),
     );
