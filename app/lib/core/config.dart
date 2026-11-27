@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
 
 abstract final class AppConfig {
-  /// Android emulator reaches the host machine at 10.0.2.2.
-  /// Override: flutter run --dart-define=API_BASE_URL=https://your-api.onrender.com
+  /// Production API (Render free plan). Builds use it by default.
+  /// Local backend from the Android emulator (it reaches the host at 10.0.2.2):
+  ///   flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000
   static const apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://10.0.2.2:8000',
+    defaultValue: 'https://india-news-api.onrender.com',
   );
 
   /// When the API is unreachable and nothing is cached, show the three bundled
@@ -15,6 +16,7 @@ abstract final class AppConfig {
     defaultValue: kDebugMode,
   );
 
-  static const requestTimeout = Duration(seconds: 10);
+  /// Render's free plan sleeps when idle; the first request can take 30-60 s to wake it.
+  static const requestTimeout = Duration(seconds: 60);
   static const pageSize = 20;
 }

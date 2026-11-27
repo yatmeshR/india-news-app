@@ -48,9 +48,12 @@ Android only. Design: "Paper" handoff (theme in `app/lib/core/theme/news_theme.d
 ```powershell
 cd app
 flutter pub get
-flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000   # emulator -> host API (default)
+flutter run                                                   # live API (https://india-news-api.onrender.com)
+flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000   # emulator -> local backend (docker compose up)
 flutter test
 ```
+
+The live API is on Render's free plan: after ~15 min idle the first request takes 30-60 s (the app waits up to 60 s).
 
 Debug builds fall back to three bundled sample stories when the API is unreachable and nothing is
 cached; release builds show the error state instead (`--dart-define=SAMPLE_FALLBACK=true` overrides).
