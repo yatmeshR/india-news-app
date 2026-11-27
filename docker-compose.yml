@@ -1,0 +1,58 @@
+services:
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build:
+      context: ./backend
+      args:
+        INSTALL_DEV: "true"
+    environment:
+      MONGO_URI: mongodb://mongo:27017
+      MONGO_DB: newsapp
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/srv
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - mongo
+
+  # One-shot ingestion run:  docker compose run --rm ingest
+  ingest:
+    build:
+      context: ./backend
+      args:
+        INSTALL_DEV: "true"
+    environment:
+      MONGO_URI: mongodb://mongo:27017
+      MONGO_DB: newsapp
+    volumes:
+      - ./backend:/srv
+    command: python -m app.ingest.run
+    depends_on:
+      - mongo
+    profiles: ["tools"]
+
+  # Tests:  docker compose run --rm test
+  test:
+    build:
+      context: ./backend
+      args:
+        INSTALL_DEV: "true"
+    environment:
+      MONGO_URI: mongodb://mongo:27017
+      MONGO_DB: newsapp_test
+    volumes:
+      - ./backend:/srv
+    command: pytest -q
+    depends_on:
+      - mongo
+    profiles: ["tools"]
+
+volumes:
+  mongo_data:

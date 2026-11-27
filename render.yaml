@@ -1,0 +1,19 @@
+# Render Blueprint: deploys the API as a Docker web service on the free plan.
+# Free instances sleep after ~15 min idle (first request is slow).
+services:
+  - type: web
+    name: india-news-api
+    runtime: docker
+    plan: free
+    region: singapore # closest to India
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: MONGO_URI
+        sync: false # set in the Render dashboard (Atlas connection string)
+      - key: MONGO_DB
+        value: newsapp
+      - key: RETENTION_DAYS
+        value: "14"

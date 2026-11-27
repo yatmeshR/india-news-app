@@ -1,0 +1,26 @@
+# Publisher RSS feeds. Headline + summary + link only; the app always links back to the source.
+# category: one of app/constants.py CATEGORIES. "top"/"india" feeds are refined by keywords.
+# Check each publisher's RSS terms before launch; remove any that object.
+sources:
+  - {name: The Hindu, url: "https://www.thehindu.com/news/national/feeder/default.rss", language: en, category: india}
+  - {name: The Hindu, url: "https://www.thehindu.com/business/feeder/default.rss", language: en, category: business}
+  - {name: The Hindu, url: "https://www.thehindu.com/sport/feeder/default.rss", language: en, category: sports}
+  - {name: The Hindu, url: "https://www.thehindu.com/news/international/feeder/default.rss", language: en, category: world}
+  - {name: The Hindu, url: "https://www.thehindu.com/sci-tech/technology/feeder/default.rss", language: en, category: technology}
+  - {name: NDTV, url: "https://feeds.feedburner.com/ndtvnews-top-stories", language: en, category: top}
+  - {name: NDTV, url: "https://feeds.feedburner.com/ndtvnews-india-news", language: en, category: india}
+  - {name: NDTV, url: "https://feeds.feedburner.com/ndtvsports-latest", language: en, category: sports}
+  - {name: Indian Express, url: "https://indianexpress.com/section/india/feed/", language: en, category: india}
+  - {name: Indian Express, url: "https://indianexpress.com/section/business/feed/", language: en, category: business}
+  - {name: Indian Express, url: "https://indianexpress.com/section/sports/feed/", language: en, category: sports}
+  - {name: Indian Express, url: "https://indianexpress.com/section/technology/feed/", language: en, category: technology}
+  - {name: Indian Express, url: "https://indianexpress.com/section/entertainment/feed/", language: en, category: entertainment}
+  - {name: Indian Express, url: "https://indianexpress.com/section/world/feed/", language: en, category: world}
+  - {name: Times of India, url: "https://timesofindia.indiatimes.com/rssfeedstopstories.cms", language: en, category: top}
+  - {name: Times of India, url: "https://timesofindia.indiatimes.com/rssfeeds/-2128936835.cms", language: en, category: india}
+  - {name: Hindustan Times, url: "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml", language: en, category: india}
+  - {name: Hindustan Times, url: "https://www.hindustantimes.com/feeds/rss/cricket/rssfeed.xml", language: en, category: sports}
+  - {name: BBC News India, url: "https://feeds.bbci.co.uk/news/world/asia/india/rss.xml", language: en, category: india}
+  # Hindi (verify these URLs when testing; the worker logs any feed that fails)
+  - {name: BBC Hindi, url: "https://feeds.bbci.co.uk/hindi/rss.xml", language: hi, category: top}
+  - {name: NDTV Khabar, url: "https://feeds.feedburner.com/ndtvkhabar-latest", language: hi, category: top}
