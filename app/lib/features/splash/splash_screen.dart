@@ -2,41 +2,24 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/router/app_router.dart';
 import '../../state/settings_provider.dart';
 
+/// The Paper app icon (assets/images/logo.svg).
 class AppLogo extends StatelessWidget {
   const AppLogo({super.key, this.size = 72});
   final double size;
 
   @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Semantics(
-      label: 'News App',
-      child: Container(
+  Widget build(BuildContext context) => SvgPicture.asset(
+        'assets/images/logo.svg',
         width: size,
         height: size,
-        decoration: BoxDecoration(
-          color: const Color(0xFFC5301F),
-          borderRadius: BorderRadius.circular(size * .22),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          'N',
-          style: TextStyle(
-            fontFamily: 'Libre Baskerville',
-            fontWeight: FontWeight.w700,
-            fontSize: size * .5,
-            color: Colors.white,
-            decorationColor: scheme.surface,
-          ),
-        ),
-      ),
-    );
-  }
+        semanticsLabel: 'News App',
+      );
 }
 
 /// Brand wordmark used in the feed top bar and splash.
